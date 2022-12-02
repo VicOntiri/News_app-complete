@@ -1,3 +1,5 @@
+import 'package_example.dart';
+
 String globalScope = "Global Scope";
 double z = 0.0;
 
@@ -93,14 +95,31 @@ void main() {
   //   print('Hello');
   // } while (condition);
 
-  double result = addNumbers(
-    x: 4.1,
-    y: 3,
-  );
+  double result = addNumbers(x: 4.1, y: 3);
   print("The height of Mark is $result");
 
   print(z);
   SignInUser("janedoe@gmail.com", "StrongPassword01");
+
+  // classes
+  User person = User(
+    name: "Jane Doe",
+    photoUrl: "https:example.com/profile.jpg",
+  );
+  // person.name = "jane Doe";
+  // print(person.name);
+  print(person.hasLongName());
+  User(
+    name: "Jane Doe",
+    photoUrl: "https:example.com/profile.jpg",
+  ).hasLongName();
+
+  // final person2 = User();
+  // print(person2.photoUrl);
+
+  // package private
+  final y = Example(8, 3);
+  print(y.private);
 }
 
 addNumbers({
@@ -126,4 +145,23 @@ SignInUser(String email, String password) {
     message = "Login Failed!!!";
   }
   return message;
+}
+
+// class User {
+//   String name = "John Doe"; // field
+//   String photoUrl = "https:example.com/profile.jpg"; // field
+// }
+
+class User {
+  final String name;
+  final String photoUrl;
+
+  const User({
+    required this.name,
+    required this.photoUrl,
+  }); // constructor
+
+  bool hasLongName() {
+    return name.length > 10;
+  }
 }

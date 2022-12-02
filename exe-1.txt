@@ -1,0 +1,59 @@
+<-- Dec 2, 2022 -->
+
+Note: Do this assignment in a new file called assignment.dart
+
+1. Write a program;
+    a. to ask the user for their name and age, 
+    b. save the name in a variable of type string called userName, 
+    c. save the age in a variable of type int called userAge
+    d. write a function that takes in the user's name and age 
+    e. the function should have a variable called yearsToAHundred of type int
+    f. this variable should store how many years the user has to get to a hundred 
+    g. the function should print the user's name, age and years to a hundred
+
+2. Calculate the area of a triangle;
+    a. create a function called calculateTriangleArea
+    b. the function should take two parameters (int base, int height)
+    c. the result of the calculated area should be saved in a variable of type int called area
+    d. the function should return the area
+    e. in your main function call the calculateTriangleArea function and store the result in a variable calculatedArea
+    f. write a print statement to print out "The area of a triangle with base 9 and height 8 is 36"
+    
+
+3. Given a number 100 print out all divisors - it is a number that divides evenly into another number for that number 
+
+4. packages:
+    a. in a new file called classes.dart, create a class to match the profile information below.
+        {
+            "name": "John Doe",
+            "profileUrl": "https:example.com/profile.jpg",
+            "followers": 266,
+            "following": 139,
+            "online": true
+        }
+    b. name your class Profile
+    c. the fields should not be hard-coded but passed in as parameters
+    d. all fields should be required and final 
+    e. in your assignment.dart file, call the call this class and pass in the parameters
+    f. save the class in a variable called user of the datatype Profile
+    g. print to the console "Hello John Doe, you have 266 followers."
+
+5. Write a program to ask the user for a number then depending on whether the number is even or odd, print our the appropriate message
+    a. Odd - "The number you entered is odd"
+    b. Even - "The number you entered is even"
+
+6. Create a class called Retirement. 
+    a. the class should have the fields, name of type string and age of type int
+    b. inside the class, create a constructor, showing the usage of the this & const keyword
+    c. all fields should be required and constants 
+    d. inside the class, create a void function called isRetired
+    e. if the user is over 65 years - print out "You are in the retirement age"
+    d. if the user is below 65 years - print out "You are not yet in the retirement age"
+    f. ask the user for their name and age, then pass them to the class 
+    g. call the isRetired function on the new user instantiated to print out the necessary statements
+
+7. print to the console number between 0 - 100 that are divisible by 2
+
+8. print to the console number between 0 - 100 that are divisible by 3
+
+9. print to the console number between 0 - 100 that are divisible by 5
