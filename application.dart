@@ -3,6 +3,9 @@ import 'package_example.dart';
 String globalScope = "Global Scope";
 double z = 0.0;
 
+// enum
+enum AccountType { free, premium, vip }
+
 void main() {
   print("Hello world");
   // variables
@@ -98,7 +101,7 @@ void main() {
   double result = addNumbers(x: 4.1, y: 3);
   print("The height of Mark is $result");
 
-  print(z);
+  // print(z);
   SignInUser("janedoe@gmail.com", "StrongPassword01");
 
   // classes
@@ -120,6 +123,78 @@ void main() {
   // package private
   final y = Example(8, 3);
   print(y.private);
+
+  // Collections
+  // lists
+  List<String> x = ['one', 'two', 'three'];
+  // List<double> y = [0.1, 0.2, 0.3, 0.4];
+  List<int> z = [1, 2, 3, 4, 5];
+  print(x.length); // number of items
+  print(x[1]); // indexing - the position of an element
+
+  // maps
+  // {
+  //   "name": "John Doe",
+  //   "photoUrl": "example.com/profile.jpg",
+  // }
+  Map<String, dynamic> myMap = {
+    'name': 'John Doe',
+    'age': 23,
+    'registered': true
+  };
+  final user_name = myMap['name'];
+  print(user_name);
+
+  // sets
+  Set<int> mySet = {1, 2, 3, 4, 5};
+  print(mySet.length);
+
+  // Functions used in dart collections
+
+  final names = ['John', 'Jane', 'Mathew'];
+  final nameLengths = names.map((name) => name.length).toList();
+  print(nameLengths.runtimeType);
+  print(nameLengths);
+
+  final namesFiltered = names.where((name) => name.length == 4).toList();
+  print(namesFiltered);
+
+  for (int i = 0; i < namesFiltered.length; i++) {
+    print(namesFiltered[i]);
+  }
+
+  for (final name in namesFiltered) {
+    print(name);
+  }
+
+  namesFiltered.forEach((name) {
+    print(name);
+  });
+
+  final e = <String>[
+    for (int i = 0; i < 5; i++) i.toString(),
+  ];
+
+  final list1 = ['hello', 'there'];
+  final list2 = ['what\s', 'up'];
+  final a = <String>[...list1, ...list2];
+  print(a);
+
+  final accountType = 'free';
+  final userAccountType = AccountType.premium;
+  print(userAccountType.index);
+
+  switch (userAccountType) {
+    case AccountType.free:
+      print('0 KSh');
+      break;
+    case AccountType.premium:
+      print('2,000 KSh');
+      break;
+    case AccountType.vip:
+      print('print 7,000 KSh');
+      break;
+  }
 }
 
 addNumbers({
