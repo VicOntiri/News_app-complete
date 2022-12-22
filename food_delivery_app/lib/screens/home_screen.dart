@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/widgets/recent_orders.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -57,6 +58,13 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {},
                 ),
               ),
+            ),
+            RecentOrders(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Nearby Restaurants'),
+              ],
             ),
           ],
         ),
