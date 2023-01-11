@@ -6,22 +6,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Food Delivery UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey[200],
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(0xFFE7703F),
+          primary: const Color(0xFFE7703F),
         ),
-        primaryColor: Color(0xFFE7703F),
+        primaryColor: const Color(0xFFE7703F),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
