@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/data/data.dart';
+import 'package:travel_app/models/destination.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -108,27 +110,37 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 20.0,
             ),
-            Container(
-              height: 150.0,
-              width: 200.0,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(30.0),
-                    child: Image(
-                      height: 150.0,
-                      width: 200.0,
-                      image: AssetImage(
-                        'assets/images/taj_mahal_india_illustration.jpg',
-                      ),
-                      fit: BoxFit.cover,
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: all_destinations.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Destination destination = all_destinations[index];
+                  return Container(
+                    margin: EdgeInsets.only(right: 20.0),
+                    height: 200.0,
+                    width: 170.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                  ),
-                ],
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image(
+                            height: 200.0,
+                            width: 170.0,
+                            image: AssetImage(
+                              destination.mainImageUrl,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],
