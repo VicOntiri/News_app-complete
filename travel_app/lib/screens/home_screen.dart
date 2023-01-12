@@ -137,6 +137,41 @@ class _HomeScreenState extends State<HomeScreen> {
                             fit: BoxFit.cover,
                           ),
                         ),
+                        Container(
+                          margin: EdgeInsets.only(top: 160.0),
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    destination.title,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Starting at \$${destination.price}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Container(
+                                  // give it a padding of 6px all round
+                                  // use the box decoration to set the color to white
+                                  // in the box decoration set the border radius to 50
+                                  // child of the container should be an image widget
+                                  // the image widget should be of height 20 and width 20
+                                  // set the BoxFit to contain
+                                  ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   );
