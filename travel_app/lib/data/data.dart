@@ -51,3 +51,10 @@ final _taj_mahal = Destination(
   distance: '25 KM',
   temperature: '31°C',
 );
+
+List all_destinations = [
+  _paris,
+  _egypt,
+  _sydney,
+  _taj_mahal,
+];
