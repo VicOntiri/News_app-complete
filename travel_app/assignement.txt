@@ -1,0 +1,6 @@
+1. create a new screen called DestinationScreen and save it in the screens folder.
+2. the new screen should be a stateless widget
+3. using the MaterialPageRouteWidget, link the HomeScreen to the DestinationScreen
+4. pass each destination as a required argument of the DestinationScreen
+5. display each destination's detailsImageUrl on the DestinationScreen
+6. each destination's detailsImageUrl should occupy 100% of the width and 65% of the screen's height
