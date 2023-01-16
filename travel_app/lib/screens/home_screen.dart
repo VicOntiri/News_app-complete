@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/data.dart';
 import 'package:travel_app/models/destination.dart';
+import 'package:travel_app/screens/destination_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -117,62 +118,84 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: all_destinations.length,
                 itemBuilder: (BuildContext context, int index) {
                   Destination destination = all_destinations[index];
-                  return Container(
-                    margin: EdgeInsets.only(right: 20.0),
-                    height: 200.0,
-                    width: 170.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DestinationScreen(),
+                      ),
                     ),
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image(
-                            height: 200.0,
-                            width: 170.0,
-                            image: AssetImage(
-                              destination.mainImageUrl,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 160.0),
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    destination.title,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Starting at \$${destination.price}',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20.0),
+                      height: 200.0,
+                      width: 170.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image(
+                              height: 200.0,
+                              width: 170.0,
+                              image: AssetImage(
+                                destination.mainImageUrl,
                               ),
-                              Container(
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 160.0),
+                            padding: EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      destination.title,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Starting at \$${destination.price}',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Container(
                                   // give it a padding of 6px all round
+                                  padding: EdgeInsets.all(6.0),
                                   // use the box decoration to set the color to white
                                   // in the box decoration set the border radius to 50
-                                  // child of the container should be an image widget
-                                  // the image widget should be of height 20 and width 20
-                                  // set the BoxFit to contain
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(50.0),
                                   ),
-                            ],
+                                  // child of the container should be an image widget
+                                  child: Image(
+                                    // the image widget should be of height 20 and width 20
+                                    height: 20.0,
+                                    width: 20.0,
+                                    image: AssetImage(
+                                      'assets/images/heart.png',
+                                    ),
+                                    // set the BoxFit to contain
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
