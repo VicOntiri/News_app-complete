@@ -201,6 +201,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              'Popular Categories',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22.0,
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Image(
+                        height: 60.0,
+                        width: 60.0,
+                        image: AssetImage(
+                          'assets/icons/icons8-airplane-take-off-100.png',
+                        ),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Text('Trips')
+                  ],
+                )
+              ],
+            ),
           ],
         ),
       ),
