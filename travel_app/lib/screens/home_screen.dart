@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/data/data.dart';
 import 'package:travel_app/models/destination.dart';
 import 'package:travel_app/screens/destination_screen.dart';
+import 'package:travel_app/widgets/popular_category.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -122,7 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => DestinationScreen(),
+                        builder: (_) => DestinationScreen(
+                          singleDestination: destination,
+                        ),
                       ),
                     ),
                     child: Container(
@@ -215,23 +218,24 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20.0,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Image(
-                        height: 60.0,
-                        width: 60.0,
-                        image: AssetImage(
-                          'assets/icons/icons8-airplane-take-off-100.png',
-                        ),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Text('Trips')
-                  ],
-                )
+                PopularCategory(
+                  imageUrl: 'assets/icons/icons8-airplane-take-off-100.png',
+                  title: 'Trips',
+                ),
+                PopularCategory(
+                  imageUrl: 'assets/icons/icons8-building-100.png',
+                  title: 'Hotel',
+                ),
+                PopularCategory(
+                  imageUrl: 'assets/icons/icons8-car-50.png',
+                  title: 'Transport',
+                ),
+                PopularCategory(
+                  imageUrl: 'assets/icons/icons8-confetti-100.png',
+                  title: 'Events',
+                ),
               ],
             ),
           ],
