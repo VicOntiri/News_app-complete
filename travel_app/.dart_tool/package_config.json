@@ -14,6 +14,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "bottom_navy_bar",
+      "rootUri": "file:///home/frenchman/flutter/.pub-cache/hosted/pub.dartlang.org/bottom_navy_bar-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///home/frenchman/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.1",
       "packageUri": "lib/",
@@ -146,7 +152,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-16T16:32:07.235258Z",
+  "generated": "2023-01-18T15:55:38.984766Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

@@ -1,7 +1,9 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/data.dart';
 import 'package:travel_app/models/destination.dart';
 import 'package:travel_app/screens/destination_screen.dart';
+import 'package:travel_app/widgets/custom_heart_icon.dart';
 import 'package:travel_app/widgets/popular_category.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -173,27 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     )
                                   ],
                                 ),
-                                Container(
-                                  // give it a padding of 6px all round
-                                  padding: EdgeInsets.all(6.0),
-                                  // use the box decoration to set the color to white
-                                  // in the box decoration set the border radius to 50
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
-                                  // child of the container should be an image widget
-                                  child: Image(
-                                    // the image widget should be of height 20 and width 20
-                                    height: 20.0,
-                                    width: 20.0,
-                                    image: AssetImage(
-                                      'assets/images/heart.png',
-                                    ),
-                                    // set the BoxFit to contain
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
+                                CustomHeartIcon(),
                               ],
                             ),
                           ),
@@ -240,6 +224,41 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: _currentIndex,
+        showElevation: true,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        onItemSelected: (index) => setState(() => _currentIndex = index),
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            icon: Icon(Icons.apps),
+            title: Text('Home'),
+            activeColor: Colors.red,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.people),
+            title: Text('Users'),
+            activeColor: Colors.purpleAccent,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.message),
+            title: Text(
+              'Messages test for mes teset test test ',
+            ),
+            activeColor: Colors.pink,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('Settings'),
+            activeColor: Colors.blue,
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
