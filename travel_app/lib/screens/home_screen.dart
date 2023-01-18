@@ -1,6 +1,10 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/data.dart';
 import 'package:travel_app/models/destination.dart';
+import 'package:travel_app/screens/destination_screen.dart';
+import 'package:travel_app/widgets/custom_category_widget.dart';
+import 'package:travel_app/widgets/custom_heart_icon.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,71 +124,67 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: all_destinations.length,
                 itemBuilder: (BuildContext context, int index) {
                   Destination destination = all_destinations[index];
-                  return Container(
-                    margin: EdgeInsets.only(right: 20.0),
-                    height: 200.0,
-                    width: 170.0,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(20.0),
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DestinationScreen(
+                          singleDestination: destination,
+                        ),
+                      ),
                     ),
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image(
-                            height: 200.0,
-                            width: 170.0,
-                            image: AssetImage(
-                              destination.mainImageUrl,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 160.0),
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    destination.title,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Starting at \$${destination.price}',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                    child: Container(
+                      margin: EdgeInsets.only(right: 20.0),
+                      height: 200.0,
+                      width: 170.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image(
+                              height: 200.0,
+                              width: 170.0,
+                              image: AssetImage(
+                                destination.mainImageUrl,
                               ),
-                              Container(
-                                padding: EdgeInsets.all(6.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(50.0),
-                                ),
-                                child: Image(
-                                  height: 20.0,
-                                  width: 20.0,
-                                  image: AssetImage(
-                                    'assets/images/heart.png',
-                                  ),
-                                  fit: BoxFit.contain,
-                                ),
-                              )
-                            ],
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            margin: EdgeInsets.only(top: 160.0),
+                            padding: EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      destination.title,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Starting at \$${destination.price}',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                CustomHeartIcon()
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -225,44 +227,41 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({
-    Key? key,
-    required this.title,
-    required this.imageUrl,
-  }) : super(key: key);
-
-  final String title;
-  final String imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Image(
-            height: 60.0,
-            width: 60.0,
-            image: AssetImage(
-              imageUrl,
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: _currentIndex,
+        showElevation: true,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        onItemSelected: (index) => setState(() => _currentIndex = index),
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            icon: Icon(Icons.apps),
+            title: Text('Home'),
+            activeColor: Colors.red,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.people),
+            title: Text('Users'),
+            activeColor: Colors.purpleAccent,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.message),
+            title: Text(
+              'Messages test for mes teset test test ',
             ),
-            fit: BoxFit.contain,
+            activeColor: Colors.pink,
+            textAlign: TextAlign.center,
           ),
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            color: Colors.grey,
+          BottomNavyBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('Settings'),
+            activeColor: Colors.blue,
+            textAlign: TextAlign.center,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
