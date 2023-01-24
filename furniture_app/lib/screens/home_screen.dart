@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:furniture_app/data/data.dart';
+import 'package:furniture_app/models/furniture.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   // margin: EdgeInsets.only(top: 50.0),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
@@ -47,6 +49,17 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
+            ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: chairs.length,
+              itemBuilder: (BuildContext context, int index) {
+                Furniture chair = chairs[index];
+                return GestureDetector(
+                  onTap: () {},
+                  child: Container(),
+                );
+              },
+            )
           ],
         ),
       ),
