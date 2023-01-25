@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'ALL TASKS',
+          'TODO APP',
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
