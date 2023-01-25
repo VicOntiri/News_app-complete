@@ -7,52 +7,76 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo App!',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.orange),
+      home: const HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task Planner!'),
+        title: const Text(
+          'ALL TASKS',
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: Column(
-        children: [
-          Progress(),
-          TaskList(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Your Progress',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            const Text('You are this far away from completing your todo list:'),
+            const SizedBox(
+              height: 10.0,
+            ),
+            LinearProgressIndicator(
+              value: 1.0 / 10.0,
+              backgroundColor: Colors.orange[100],
+              color: Colors.orange,
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Text(
+              'Your TaskList',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            const Text('Find your todo list below:'),
+            const SizedBox(
+              height: 10.0,
+            ),
+            TaskItem(label: 'Learn HTML'),
+            TaskItem(label: 'Learn CSS'),
+            TaskItem(label: 'Learn JS'),
+            TaskItem(label: 'Build a hangman game'),
+            TaskItem(label: 'Push code to gitlab'),
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class Progress extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('You are this far away from completing your todo list:'),
-        LinearProgressIndicator(value: 0.0),
-      ],
-    );
-  }
-}
-
-class TaskList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TaskItem(label: 'Learn HTML'),
-        TaskItem(label: 'Learn CSS'),
-        TaskItem(label: 'Learn JS'),
-        TaskItem(label: 'Build a hangman game'),
-        TaskItem(label: 'Push code to gitlab'),
-      ],
     );
   }
 }
@@ -76,6 +100,7 @@ class _TaskItemState extends State<TaskItem> {
         Checkbox(
           onChanged: (newValue) => setState(() => _value = newValue),
           value: _value,
+          shape: const CircleBorder(),
         ),
         Text(widget.label),
       ],
