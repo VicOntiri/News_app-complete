@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+// 1. create our ui
+// 2. create our model
+// 3. create our provider
+// 4.
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

@@ -100,9 +100,17 @@ class Task {
   final String label;
   final bool completed;
 
-  Task({required this.id, required this.label, this.completed = false});
+  Task({
+    required this.id,
+    required this.label,
+    this.completed = false,
+  });
 
-  Task copyWith({int? id, String? label, bool? completed}) {
+  Task copyWith({
+    int? id,
+    String? label,
+    bool? completed,
+  }) {
     return Task(
         id: id ?? this.id,
         label: label ?? this.label,
