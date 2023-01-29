@@ -1,0 +1,34 @@
+In Riverpod, a Notifier is a type of provider that can be used to manage the state of a piece of code that can notify its consumers of changes. 
+It is similar to the ChangeNotifier class provided by Flutter, but it is integrated with the riverpod package and can be used in the same way as other providers.
+
+A Notifier provider is created using the NotifierProvider class and it takes a create function that returns an instance of the ChangeNotifier class. 
+Here is an example of creating a Notifier provider that stores a counter value:
+
+final counterProvider = NotifierProvider<Counter>((ref) => Counter());
+
+You can use the .watch method on context to read the state of the notifier and the notifyListeners() method provided by ChangeNotifier to notify the consumers of the changes. 
+Here is an example of how to use a Notifier provider in a widget:
+
+class MyWidget extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      final counter = context.watch<Counter>();
+      return Column(
+        children: [
+          Text('Counter: ${counter.value}'),
+          RaisedButton(
+            onPressed: () {
+              counter.increment();
+            },
+            child: Text('Increment'),
+          ),
+        ],
+      );
+    }
+  }
+
+It is important to note that when you create a NotifierProvider, the notifier will be automatically disposed when it is no longer in use, 
+which means that it will stop listening for changes.
+
+In summary, Notifier is a type of provider in Riverpod that allows you to manage the state of a piece of code that can notify its 
+consumers of changes. It is integrated with the riverpod package, and it is similar to the ChangeNotifier class provided by Flutter.

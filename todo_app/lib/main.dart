@@ -75,11 +75,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var tasks = ref.watch(tasksProvider);
+
+    var numCompletedTasks = tasks.where((task) {
+      return task.completed == true;
+    }).length;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -110,7 +116,7 @@ class HomeScreen extends StatelessWidget {
               height: 10.0,
             ),
             LinearProgressIndicator(
-              value: 1.0 / 10.0,
+              value: numCompletedTasks / tasks.length,
               backgroundColor: Colors.orange[100],
               color: Colors.orange,
             ),
@@ -130,11 +136,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            TaskItem(title: 'Learn HTML'),
-            TaskItem(title: 'Learn CSS'),
-            TaskItem(title: 'Learn JS'),
-            TaskItem(title: 'Build a hangman game'),
-            TaskItem(title: 'Push code to gitlab'),
+            TaskList(),
           ],
         ),
       ),
@@ -142,28 +144,34 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class TaskItem extends StatefulWidget {
-  final String title;
-
-  TaskItem({Key? key, required this.title}) : super(key: key);
+class TaskList extends ConsumerWidget {
+  const TaskList({super.key});
 
   @override
-  _TaskItemState createState() => _TaskItemState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    var provider_tasks = ref.watch(tasksProvider);
+
+    return Column(
+      children: provider_tasks.map((task) => TaskItem(task: task)).toList(),
+    );
+  }
 }
 
-class _TaskItemState extends State<TaskItem> {
-  bool? _value = false;
+class TaskItem extends ConsumerWidget {
+  final Task task;
+  const TaskItem({super.key, required this.task});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         Checkbox(
-          onChanged: (newValue) => setState(() => _value = newValue),
-          value: _value,
+          onChanged: (newValue) =>
+              ref.read(tasksProvider.notifier).toggle(task.id),
+          value: task.completed,
           shape: const CircleBorder(),
         ),
-        Text(widget.title),
+        Text(task.title),
       ],
     );
   }
