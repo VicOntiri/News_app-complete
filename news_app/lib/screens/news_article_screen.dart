@@ -35,10 +35,7 @@ class NewsArticle extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 30.0,
-              horizontal: 20.0,
-            ),
+            padding: const EdgeInsets.all(10.0),
             child: IconButton(
               icon: const FaIcon(
                 FontAwesomeIcons.arrowLeftLong,
@@ -116,12 +113,12 @@ class NewsArticle extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 Text(
                   singleNewsArticle.description,
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: Colors.black87,
                   ),
                 ),
               ],
