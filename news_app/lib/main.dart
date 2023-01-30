@@ -5,6 +5,8 @@ void main() {
   runApp(const MyApp());
 }
 
+String apiKey = '66f21f3b8f58423aa0b7aa3eb4e174c9';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
